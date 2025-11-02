@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-purple-light: #DB93F7;
+  --color-purple: #BB4CE8;
+  --color-orange: #FF9C4D;
+  --color-gray-light: #F0F1F6;
+  --color-gray: #BAB9BF;
+  --color-gray-dark: #67687D;
+  --color-bg-main: #f3f5f7;
+  --color-text-primary: #1a191c;
+  --color-text-secondary: #6c6e6f;
+  --color-card-bg: #f9f9f9;
+}
+
+body {
+  font-family: 'Roboto';
+  background-color: #E3E7EB;
+}
