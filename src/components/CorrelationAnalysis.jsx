@@ -157,7 +157,7 @@ function CorrelationAnalysis({ selectedCoin, dateRange }) {
       
       <div className="relative overflow-visible" style={{ width: '759px', height: '186px' }}>
         {/* Y축 (Price) */}
-        <div className="absolute left-0 top-0 w-[54px] h-[186px] overflow-visible">
+        <div className="absolute left-0 top-0 w-[54px] h-[210px] overflow-visible">
           {yLabels.map((label, index) => (
             <div 
               key={index} 
