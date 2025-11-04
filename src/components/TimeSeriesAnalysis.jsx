@@ -17,35 +17,35 @@ const InfoPanel = memo(({ displayData }) => {
       {displayData ? (
         <>
           {/* 날짜 */}
-          <p className="text-[16px] text-[#1a191c] mb-[13px] leading-[19px]">
+          <p className="text-[16px] text-text-primary mb-[13px] leading-[19px]">
             {displayData.dateStr}
           </p>
           
           {/* 구분선 */}
-          <div className="w-full h-[1px] bg-[#e8e8e8] mb-[25px]" />
+          <div className="divider-light mb-[25px]" />
           
           {/* Active Accounts */}
           <div className="mb-[15px]">
-            <p className="text-[14px] text-[#6c6e6f] mb-[7px] leading-[16px]">
+            <p className="text-[14px] text-text-secondary mb-[7px] leading-[16px]">
               Active Accounts
             </p>
-            <p className="text-[24px] font-bold text-[#ff9c4d] leading-[28px]">
+            <p className="text-[24px] font-bold text-orange leading-[28px]">
               {displayData.accountsMonthly.toLocaleString()}
             </p>
           </div>
           
           {/* Price */}
           <div>
-            <p className="text-[14px] text-[#6c6e6f] mb-[7px] leading-[16px]">
+            <p className="text-[14px] text-text-secondary mb-[7px] leading-[16px]">
               Price
             </p>
-            <p className="text-[24px] font-bold text-[#bb4ce8] leading-[28px]">
+            <p className="text-[24px] font-bold text-purple leading-[28px]">
               ${displayData.price.toFixed(2)}
             </p>
           </div>
         </>
       ) : (
-        <p className="text-[14px] text-[#6c6e6f]">No data available</p>
+        <p className="text-[14px] text-text-secondary">No data available</p>
       )}
     </div>
   )
@@ -145,7 +145,7 @@ function TimeSeriesAnalysis({ selectedCoin, dateRange }) {
   return (
     <div className="bg-white rounded-[20px] flex-1 pt-[25px] pb-[25px] flex flex-col">
       {/* 타이틀 */}
-      <h2 className="text-[20px] font-medium text-[#1a191c] mb-[38px] pl-[25px] leading-[23px]">
+      <h2 className="text-[20px] font-medium text-text-primary mb-[38px] pl-[25px] leading-[23px]">
         Time Series Analysis
       </h2>
       

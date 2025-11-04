@@ -4,7 +4,7 @@ import CoinData from './components/CoinData'
 import TimeSeriesAnalysis from './components/TimeSeriesAnalysis'
 import CorrelationAnalysis from './components/CorrelationAnalysis'
 import Calendar from './components/Calendar'
-import MessageDistribution from './components/MessageDistribution'
+import AnalysisSummary from './components/AnalysisSummary'
 import { coinsData } from './data/coinsData'
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-8">
-      <div className="bg-bg-main rounded-[20px] w-full max-w-[1300px] h-[950px] p-6">
+      <div className="bg-bg-main rounded-[20px] w-full max-w-[1300px] h-[950px] p-6 ">
         <div className="flex gap-6 h-full">
           {/* 왼쪽 영역 */}
           <div className="flex-1 flex flex-col gap-6">
@@ -43,7 +43,10 @@ function App() {
             <Calendar 
               onDateRangeChange={setDateRange}
             />
-            <MessageDistribution />
+            <AnalysisSummary 
+              selectedCoin={selectedCoin}
+              dateRange={dateRange}
+            />
           </div>
         </div>
       </div>
