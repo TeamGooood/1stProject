@@ -35,11 +35,11 @@
 ### Gradients
 **Correlation Gradient** (상관계수 스케일)
 ```css
-background: linear-gradient(90deg, #BB4CE8 0%, #E8AFEA 49.52%, #FF9C4D 100%);
+background: linear-gradient(90deg, #BB4CE8 0%, #F3C9D7 49.52%, #FF9C4D 100%);
 ```
 - **클래스명**: `bg-correlation-gradient`
 - **사용처**: Analysis Summary의 상관계수 스케일 바
-- **특징**: 보라색(-1) → 연보라(0) → 주황색(+1)
+- **특징**: 보라색(-1) → 연핑크(0) → 주황색(+1)
 
 ---
 
