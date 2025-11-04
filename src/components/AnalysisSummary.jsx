@@ -13,10 +13,11 @@ function AnalysisSummary({ selectedCoin, dateRange }) {
       return {
         accountsChange: 0,
         priceChange: 0,
-        correlation: 0,
+        correlation: null,
         accountsChangeFormatted: '+ 0.0%',
         priceChangeFormatted: '+ 0.0%',
-        indicatorPosition: 50
+        indicatorPosition: 50,
+        isCorrelationValid: false
       }
     }
 
@@ -35,10 +36,11 @@ function AnalysisSummary({ selectedCoin, dateRange }) {
       return {
         accountsChange: 0,
         priceChange: 0,
-        correlation: 0,
+        correlation: null,
         accountsChangeFormatted: '+ 0.0%',
         priceChangeFormatted: '+ 0.0%',
-        indicatorPosition: 50
+        indicatorPosition: 50,
+        isCorrelationValid: false
       }
     }
 
@@ -55,16 +57,20 @@ function AnalysisSummary({ selectedCoin, dateRange }) {
     const prices = filteredData.map(d => d.price)
     const correlation = calculateSpearmanCorrelation(accounts, prices)
 
-    // 인디케이터 위치 계산
-    const indicatorPosition = correlationToPosition(correlation)
+    // 상관계수가 유효하지 않을 때 (데이터가 2개 미만)
+    const isCorrelationValid = !isNaN(correlation)
+    
+    // 인디케이터 위치 계산 (유효하지 않으면 중앙인 0 위치로)
+    const indicatorPosition = isCorrelationValid ? correlationToPosition(correlation) : 50
 
     return {
       accountsChange,
       priceChange,
-      correlation,
+      correlation: isCorrelationValid ? correlation : null,
       accountsChangeFormatted: formatChangeRate(accountsChange),
       priceChangeFormatted: formatChangeRate(priceChange),
-      indicatorPosition
+      indicatorPosition,
+      isCorrelationValid
     }
   }, [selectedCoin, dateRange])
 
@@ -117,7 +123,9 @@ function AnalysisSummary({ selectedCoin, dateRange }) {
         <div className="mb-[29px]">
           <p className="text-[16px] text-text-secondary mb-[6px] leading-[19px]">Correlation Coefficient</p>
           <p className="text-[24px] font-medium text-text-primary leading-[28px]">
-            {analysisData.correlation.toFixed(2)}
+            {analysisData.isCorrelationValid 
+              ? analysisData.correlation.toFixed(2) 
+              : 'N/A'}
           </p>
         </div>
 
@@ -140,12 +148,12 @@ function AnalysisSummary({ selectedCoin, dateRange }) {
           </div>
 
           {/* 스케일 레이블 */}
-          <div className="flex justify-between text-[10px] text-text-secondary opacity-50 mt-[4px]">
-            <span className="leading-[12px]">-1.0</span>
-            <span className="leading-[12px]">-0.5</span>
+          <div className="flex justify-between text-[10px] gap-[63px] text-text-secondary opacity-50 mt-[4px] ml-[5px]">
+            <span className="leading-[12px] -translate-x-[13px]">-1.0</span>
+            <span className="leading-[12px] -translate-x-[8px]">-0.5</span>
             <span className="leading-[12px]">0.0</span>
-            <span className="leading-[12px]">+0.5</span>
-            <span className="leading-[12px]">+1.0</span>
+            <span className="leading-[12px] translate-x-[3px]">+0.5</span>
+            <span className="leading-[12px] translate-x-[5px]">+1.0</span>
           </div>
         </div>
 

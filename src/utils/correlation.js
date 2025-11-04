@@ -6,10 +6,15 @@
  */
 export function calculateSpearmanCorrelation(x, y) {
   if (!x || !y || x.length !== y.length || x.length === 0) {
-    return 0
+    return NaN
   }
 
   const n = x.length
+  
+  // 데이터가 2개 미만이면 상관계수를 계산할 수 없음
+  if (n < 2) {
+    return NaN
+  }
 
   // 1. 각 배열의 순위(rank) 계산
   const rankX = getRanks(x)
