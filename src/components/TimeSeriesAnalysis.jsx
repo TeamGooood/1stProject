@@ -62,12 +62,13 @@ function TimeSeriesAnalysis({ selectedCoin, dateRange }) {
     }
 
     const startTime = dateRange.startDate.getTime()
-    const endTime = dateRange.endDate.getTime()
+    // endDate 다음 날 자정까지 포함 (endDate 당일 전체를 포함하기 위함)
+    const endTime = dateRange.endDate.getTime() + 24 * 60 * 60 * 1000
 
     const filtered = selectedCoin.timeSeriesData
       .filter(item => {
         const itemTime = item.date.getTime()
-        return itemTime >= startTime && itemTime <= endTime
+        return itemTime >= startTime && itemTime < endTime
       })
       .map(item => ({
         date: item.date.getDate(), // 일자만 표시 (X축 레이블용)

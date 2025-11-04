@@ -23,9 +23,12 @@ function AnalysisSummary({ selectedCoin, dateRange }) {
     const { startDate, endDate } = dateRange
     
     // 날짜 범위 내의 데이터 필터링
+    // endDate 다음 날 자정까지 포함 (endDate 당일 전체를 포함하기 위함)
+    const endDateTime = new Date(endDate.getTime() + 24 * 60 * 60 * 1000)
+    
     const filteredData = selectedCoin.timeSeriesData.filter(item => {
       const itemDate = new Date(item.date)
-      return itemDate >= startDate && itemDate <= endDate
+      return itemDate >= startDate && itemDate < endDateTime
     })
 
     if (filteredData.length === 0) {

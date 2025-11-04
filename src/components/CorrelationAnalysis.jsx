@@ -75,9 +75,12 @@ function CorrelationAnalysis({ selectedCoin, dateRange }) {
     if (!selectedCoin?.timeSeriesData || !dateRange) return []
     
     const { startDate, endDate } = dateRange
+    // endDate 다음 날 자정까지 포함 (endDate 당일 전체를 포함하기 위함)
+    const endDateTime = new Date(endDate.getTime() + 24 * 60 * 60 * 1000)
+    
     return selectedCoin.timeSeriesData.filter(item => {
       const itemDate = new Date(item.date)
-      return itemDate >= startDate && itemDate <= endDate
+      return itemDate >= startDate && itemDate < endDateTime
     })
   }, [selectedCoin, dateRange])
 
