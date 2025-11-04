@@ -31,6 +31,7 @@
 body {
   font-family: 'Roboto';
   background-color: #E3E7EB;
+  overflow-x: auto;
 }
 
 /* ==================== Gradients ==================== */

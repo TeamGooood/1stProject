@@ -15,8 +15,8 @@ function App() {
   })
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
-      <div className="bg-bg-main rounded-[20px] w-[1300px] h-[950px] p-6 shadow-[10px_10px_50px_0px_rgba(0,0,0,0.1)]">
+    <div className="min-h-screen p-8 overflow-x-auto">
+      <div className="bg-bg-main rounded-[20px] min-w-[1300px] w-[1300px] h-[950px] p-6 shadow-[10px_10px_50px_0px_rgba(0,0,0,0.1)] mx-auto my-auto">
         <div className="flex gap-6 h-full">
           {/* 왼쪽 영역 */}
           <div className="flex-1 flex flex-col gap-6">
